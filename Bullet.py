@@ -6,12 +6,15 @@ shoot_sound = pg.mixer.Sound("Shootsound.wav")
 
 class Bullet:
 
-    def __init__(self, position, speed : int = 50):
+    def __init__(self, position, speed : int = 50, damage = 1):
         self.x, self.y = position
         self.speed = speed
         self.alive = True
         self.rect = pg.Rect(self.x, self.y, 5, 5)
         self.radius = 5
+        self.image = pg.image.load("bullet.png").convert_alpha()
+        self.image = pg.transform.scale(self.image, (20, 20))
+        self.damage = damage
 
     def update(self, dt, target_position):
         target_x, target_y = target_position
@@ -30,7 +33,9 @@ class Bullet:
     def hit_enemy(self):
         shoot_sound.play()
         self.alive = False
+        return self.damage
 
-    def draw(self, surface: pg.Surface, color: tuple, radius: int):
-        pg.draw.circle(surface, color, (int(self.x), int(self.y)), self.radius)
+    def draw(self, surface: pg.Surface):
+        surface.blit(self.image, self.rect)
+        #pg.draw.rect(surface, "Red", (self.x, self.y, 30, 30), 3)    #bullet hitbox
 

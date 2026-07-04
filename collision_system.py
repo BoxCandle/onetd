@@ -17,12 +17,9 @@ class Collision:
                 if not enemy.alive:
                     continue
 
-                if self._distance(bullet, enemy) < bullet.radius + enemy.radius:
-                    enemy.kill()
+                if bullet.rect.colliderect(enemy.rect):
                     bullet.hit_enemy()
+                    enemy.take_damage(bullet.hit_enemy())
                     self.bullets.remove(bullet)
                     break
 
-
-    def _distance(self,a, b):
-        return math.hypot(a.x - b.x, a.y - b.y)

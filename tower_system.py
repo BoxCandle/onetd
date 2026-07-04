@@ -3,7 +3,7 @@ import pygame as pg
 class Tower:
     def __init__(self, position : tuple,):
         self.x, self.y = position
-        self.image = pg.image.load("scarecrow.png").convert_alpha()
+        self.image = pg.image.load("Tower.png").convert_alpha()
         self.image = pg.transform.scale(self.image, (100, 100))
         self.rect = self.image.get_rect(center = (self.x, self.y))
         self.level = 1
@@ -17,3 +17,7 @@ class Tower:
 
     def draw(self, surface: pg.Surface):
         surface.blit(self.image, self.rect)
+        #ADD HEALTHBAR
+        #ADD XP BAR
+        #ADD LEVEL
+        #ADD UPGRADES

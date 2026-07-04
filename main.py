@@ -20,8 +20,8 @@ RED = (168, 0, 0)
 BLACK = (20, 20, 20)
 
 def spawn_enemy():
-    x = random.randint(0, window_width - 1)
-    y = random.randint(0, window_height - 1)
+    x = random.randint(0, window_width)
+    y = random.randint(0, window_height)
     return x, y
 
 # Sounds
@@ -47,7 +47,6 @@ clock = pg.time.Clock()
 running = True
 
 while running:
-    enemies[-1].xp_reward = 5
     dt = clock.tick(60) / 1000
     collision_system = Collision(bullets, enemies)
     for event in pg.event.get():
@@ -55,7 +54,8 @@ while running:
             running = False
 
     screen.fill(PALE_BLUE)
-
+    enemies[-1].update()
+    enemies[-1].target((tower.x, tower.y), dt)
     # HOME BULLET TOWARDS ENEMY
     if bullets and enemies:
         bullets[-1].update(dt, enemies[-1].rect.center)
@@ -73,7 +73,7 @@ while running:
 
     # RESPAWN ENEMY AND BULLET IF NEEDED
     if not enemies:
-        enemies.append(Enemy(1, spawn_enemy()))
+        enemies.append(Enemy(5, spawn_enemy()))
     if not bullets:
         bullets.append(Bullet(tower_pos, speed = 200))
 
@@ -86,6 +86,6 @@ while running:
 
     # DRAW BULLET
     for bullet in bullets:
-        bullets[-1].draw(screen, BULLET_COLOR, bullets[-1].radius)
+        bullets[-1].draw(screen)
 
     pg.display.flip()
