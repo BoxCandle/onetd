@@ -20,8 +20,8 @@ RED = (168, 0, 0)
 BLACK = (20, 20, 20)
 
 def spawn_enemy():
-    x = random.randint(0, window_width)
-    y = random.randint(0, window_height)
+    x = random.randint(400, window_width)
+    y = random.randint(400, window_height)
     return x, y
 
 # Sounds
@@ -41,10 +41,12 @@ bullet_radius = 5
 bullet_speed = 200
 
 tower = Tower(tower_pos)
-enemies = [Enemy(5, spawn_enemy())]
-bullets = [Bullet(tower_pos, speed = 200)]
+enemies = []
+bullets = []
 clock = pg.time.Clock()
 running = True
+interval = 1000
+last_time = pg.time.get_ticks()
 
 while running:
     dt = clock.tick(60) / 1000
@@ -54,11 +56,20 @@ while running:
             running = False
 
     screen.fill(PALE_BLUE)
-    enemies[-1].update()
-    enemies[-1].target((tower.x, tower.y), dt)
-    # HOME BULLET TOWARDS ENEMY
-    if bullets and enemies:
-        bullets[-1].update(dt, enemies[-1].rect.center)
+
+    now = pg.time.get_ticks()
+    # RESPAWN ENEMY AND BULLET IF NEEDED
+    if not enemies:
+        enemies.append(Enemy(5, spawn_enemy()))
+        for enemy in enemies:
+            enemies[-1].update()
+            enemy.target(tower_pos, dt)
+
+    for i in range(tower.bullet_count):
+        bullets.append(Bullet(tower_pos, speed = 50))
+        if len(bullets) > 0:
+            for bullet in bullets:
+                bullet.update(dt, enemies[-1].rect.center)
 
     # CHECK COLLISION BETWEEN BULLET AND ENEMY
     collision_system.update()
@@ -71,12 +82,6 @@ while running:
     bullets = [b for b in bullets if b.alive]
     enemies = [e for e in enemies if e.alive]
 
-    # RESPAWN ENEMY AND BULLET IF NEEDED
-    if not enemies:
-        enemies.append(Enemy(5, spawn_enemy()))
-    if not bullets:
-        bullets.append(Bullet(tower_pos, speed = 200))
-
     # DRAW TOWER
     tower.draw(screen)
 
@@ -84,8 +89,7 @@ while running:
     for enemy in enemies:
         enemy.draw(screen)
 
-    # DRAW BULLET
     for bullet in bullets:
-        bullets[-1].draw(screen)
+        bullet.draw(screen)
 
     pg.display.flip()

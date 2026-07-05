@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a24dff51-a497-4ca5-aed2-d6c59b7b9c6b" name="Changes" comment="Fixed XP system. Now it stores and levels up">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bullet.py" beforeDir="false" afterPath="$PROJECT_DIR$/Bullet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/collision_system.py" beforeDir="false" afterPath="$PROJECT_DIR$/collision_system.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tower_system.py" beforeDir="false" afterPath="$PROJECT_DIR$/tower_system.py" afterDir="false" />
-    </list>
+    <list default="true" id="a24dff51-a497-4ca5-aed2-d6c59b7b9c6b" name="Changes" comment="Finally was able to make several bullets appear on the screen, but now they turned into a lazer. Will need to use time ticks to make fix it." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -101,7 +94,8 @@
       <workItem from="1782953919360" duration="4533000" />
       <workItem from="1783106030623" duration="6035000" />
       <workItem from="1783175805988" duration="4364000" />
-      <workItem from="1783201224809" duration="3585000" />
+      <workItem from="1783201224809" duration="4000000" />
+      <workItem from="1783212259046" duration="10333000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed XP system. Now it stores and levels up">
       <option name="closed" value="true" />
@@ -111,7 +105,31 @@
       <option name="project" value="LOCAL" />
       <updated>1783129348271</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fixed hitboxes and added animations to creeps">
+      <option name="closed" value="true" />
+      <created>1783205039378</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1783205039378</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Fixed hitboxes and added animations to creeps">
+      <option name="closed" value="true" />
+      <created>1783205112930</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1783205112930</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Finally was able to make several bullets appear on the screen, but now they turned into a lazer. Will need to use time ticks to make fix it.">
+      <option name="closed" value="true" />
+      <created>1783223231163</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1783223231163</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,13 +137,15 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fixed XP system. Now it stores and levels up" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed XP system. Now it stores and levels up" />
+    <MESSAGE value="Fixed hitboxes and added animations to creeps" />
+    <MESSAGE value="Finally was able to make several bullets appear on the screen, but now they turned into a lazer. Will need to use time ticks to make fix it." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finally was able to make several bullets appear on the screen, but now they turned into a lazer. Will need to use time ticks to make fix it." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Python_Games$main.coverage" NAME="main Coverage Results" MODIFIED="1783204814901" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Python_Games$main.coverage" NAME="main Coverage Results" MODIFIED="1783223148702" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Python_Games$enemy.coverage" NAME="enemy Coverage Results" MODIFIED="1783201390975" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Python_Games$tower_system.coverage" NAME="tower_system Coverage Results" MODIFIED="1783127496916" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Python_Games$level_system.coverage" NAME="level_system Coverage Results" MODIFIED="1783128093533" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Python_Games$Bullet.coverage" NAME="Bullet Coverage Results" MODIFIED="1782355160415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Python_Games$Bullet.coverage" NAME="Bullet Coverage Results" MODIFIED="1783219508706" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

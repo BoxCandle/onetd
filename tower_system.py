@@ -8,6 +8,7 @@ class Tower:
         self.rect = self.image.get_rect(center = (self.x, self.y))
         self.level = 1
         self.xp = 0
+        self.bullet_count = 3
 
     def on_enemy_killed(self, enemy, xp_sys):
         xp = enemy.kill()

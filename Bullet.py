@@ -31,7 +31,6 @@ class Bullet:
         self.rect.center = (self.x, self.y)
 
     def hit_enemy(self):
-        shoot_sound.play()
         self.alive = False
         return self.damage
 

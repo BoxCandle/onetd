@@ -2,7 +2,7 @@ import pygame as pg
 import math
 
 class Enemy:
-    def __init__(self, xp_reward : int, position : tuple, speed : int = 100, health : int = 2):
+    def __init__(self, xp_reward : int, position : tuple, speed : int = 100, health : int = 200):
         self.x, self.y = position
         self.speed = speed
         self.alive = True
@@ -56,5 +56,5 @@ class Enemy:
 
     def draw(self, surface: pg.Surface) -> None:
         surface.blit(self.image, self.rect)
-        pg.draw.rect(surface,"Red", self.rect, 3) #enemy hitbox
+        #pg.draw.rect(surface,"Red", self.rect, 3) #enemy hitbox
     #ADD HEALTHBARS
