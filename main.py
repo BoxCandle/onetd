@@ -45,7 +45,7 @@ enemies = []
 bullets = []
 clock = pg.time.Clock()
 running = True
-interval = 1000
+interval = 500
 last_time = pg.time.get_ticks()
 
 while running:
@@ -57,7 +57,6 @@ while running:
 
     screen.fill(PALE_BLUE)
 
-    now = pg.time.get_ticks()
     # RESPAWN ENEMY AND BULLET IF NEEDED
     if not enemies:
         enemies.append(Enemy(5, spawn_enemy()))
@@ -65,11 +64,15 @@ while running:
             enemies[-1].update()
             enemy.target(tower_pos, dt)
 
-    for i in range(tower.bullet_count):
-        bullets.append(Bullet(tower_pos, speed = 50))
-        if len(bullets) > 0:
-            for bullet in bullets:
-                bullet.update(dt, enemies[-1].rect.center)
+    now = pg.time.get_ticks()
+
+    if tower.ammo > 0 and now - tower.last_shot >= tower.shoot_delay:
+        bullets.append(Bullet(tower_pos, speed = 50, damage = 5))
+        tower.ammo -= 1
+        tower.last_shot = now
+
+    for bullet in bullets:
+        bullet.update(dt, enemies[-1].rect.center)
 
     # CHECK COLLISION BETWEEN BULLET AND ENEMY
     collision_system.update()

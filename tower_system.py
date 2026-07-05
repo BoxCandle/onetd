@@ -8,7 +8,9 @@ class Tower:
         self.rect = self.image.get_rect(center = (self.x, self.y))
         self.level = 1
         self.xp = 0
-        self.bullet_count = 3
+        self.ammo = 3
+        self.shoot_delay = 500
+        self.last_shot = pg.time.get_ticks()
 
     def on_enemy_killed(self, enemy, xp_sys):
         xp = enemy.kill()
