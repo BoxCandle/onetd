@@ -2,7 +2,7 @@ import pygame as pg
 import math
 
 class Enemy:
-    def __init__(self, xp_reward : int, position : tuple, speed : int = 100, health : int = 200):
+    def __init__(self, xp_reward : int, position : tuple, speed : int = 100, health : int = 20):
         self.x, self.y = position
         self.speed = speed
         self.alive = True

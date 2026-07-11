@@ -11,6 +11,8 @@ class Tower:
         self.ammo = 3
         self.shoot_delay = 500
         self.last_shot = pg.time.get_ticks()
+        self.last_mag = pg.time.get_ticks()
+        self.reload = 1000
 
     def on_enemy_killed(self, enemy, xp_sys):
         xp = enemy.kill()
@@ -20,6 +22,9 @@ class Tower:
 
     def draw(self, surface: pg.Surface):
         surface.blit(self.image, self.rect)
+        pg.draw.rect(surface, "Cyan", (self.x - 30, self.y - 50, self.xp, 5))
+        pg.draw.rect(surface, "Blue", (self.x - 30, self.y - 50, self.level * 5, 10), 3)
+
         #ADD HEALTHBAR
         #ADD XP BAR
         #ADD LEVEL

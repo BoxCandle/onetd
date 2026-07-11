@@ -1,7 +1,7 @@
 class LevelSystem:
     def __init__(self, tower, enemy):
         self.tower_xp = tower.xp
-        self.xp_amount= enemy.xp_reward
+        self.xp_amount = enemy.xp_reward
         self.tower_level = tower.level
 
     def try_level_up(self) -> bool:

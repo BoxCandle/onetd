@@ -71,6 +71,10 @@ while running:
         tower.ammo -= 1
         tower.last_shot = now
 
+    if tower.ammo == 0 and now - tower.last_shot >= tower.reload:
+        tower.ammo = 3
+
+
     for bullet in bullets:
         bullet.update(dt, enemies[-1].rect.center)
 
