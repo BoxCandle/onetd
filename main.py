@@ -1,102 +1,48 @@
-import pygame as pg
-import random
-from enemy import Enemy
-from Bullet import Bullet
-from tower_system import Tower
-from collision_system import Collision
-from level_system import LevelSystem
+import pygame
+from Renderer import Renderer
+from Tower import Tower
+from Enemy import Enemy
+pygame.init()
 
-pg.init()
-pg.mixer.init()
+WIDTH = 600
+HEIGHT = 600
 
-window_height = 500
-window_width = 500
-screen = pg.display.set_mode((window_width, window_height))
+window = pygame.display.set_mode((WIDTH, HEIGHT))
 
-# Colors
-PALE_BLUE = (73, 144, 209)
-CEMENT = (54, 54, 54)
-RED = (168, 0, 0)
-BLACK = (20, 20, 20)
+map_surface = pygame.image.load("assets/Maps/Map.jpg")
+map_rect = map_surface.get_rect(center=(WIDTH // 2,HEIGHT // 2))
 
-def spawn_enemy():
-    x = random.randint(400, window_width)
-    y = random.randint(400, window_height)
-    return x, y
+TOWER = Tower((50, HEIGHT // 2 - 50))
 
-# Sounds
-shoot_sound = pg.mixer.Sound("Shootsound.wav")
+clock = pygame.time.Clock()
+SPAWN_POINT = 550, HEIGHT // 2 - 50
 
-# Constants
-TOWER_COLOR = CEMENT
-ENEMY_COLOR = RED
-BULLET_COLOR = BLACK
-
-# Game state
-tower_pos = (window_width // 2, window_height // 2)
-bullet_pos = tower_pos
-tower_radius = 20
-enemy_radius = 10
-bullet_radius = 5
-bullet_speed = 200
-
-tower = Tower(tower_pos)
 enemies = []
-bullets = []
-clock = pg.time.Clock()
-running = True
-interval = 500
-last_time = pg.time.get_ticks()
 
-while running:
+renderer = Renderer(window)
+
+while True:
     dt = clock.tick(60) / 1000
-    collision_system = Collision(bullets, enemies)
-    for event in pg.event.get():
-        if event.type == pg.QUIT:
-            running = False
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_pos = pygame.mouse.get_pos()
+            if 50 <= mouse_pos[0] <= 150:
+                enemies.append(Enemy(SPAWN_POINT))
+                print("enemy count", len(enemies))
 
-    screen.fill(PALE_BLUE)
-
-    # RESPAWN ENEMY AND BULLET IF NEEDED
-    if not enemies:
-        enemies.append(Enemy(5, spawn_enemy()))
-        for enemy in enemies:
-            enemies[-1].update()
-            enemy.target(tower_pos, dt)
-
-    now = pg.time.get_ticks()
-
-    if tower.ammo > 0 and now - tower.last_shot >= tower.shoot_delay:
-        bullets.append(Bullet(tower_pos, speed = 50, damage = 5))
-        tower.ammo -= 1
-        tower.last_shot = now
-
-    if tower.ammo == 0 and now - tower.last_shot >= tower.reload:
-        tower.ammo = 3
-
-
-    for bullet in bullets:
-        bullet.update(dt, enemies[-1].rect.center)
-
-    # CHECK COLLISION BETWEEN BULLET AND ENEMY
-    collision_system.update()
-    xp_system = LevelSystem(tower, enemies[-1])
-    # GIVE XP TO PLAYER IF ENEMY IS KILLED
     for enemy in enemies:
-        if not enemy.alive:
-            tower.on_enemy_killed(enemies[-1], xp_system)
-    # REMOVE DEAD ENEMIES AND BULLETS
-    bullets = [b for b in bullets if b.alive]
-    enemies = [e for e in enemies if e.alive]
+        enemy.move(dt)
 
-    # DRAW TOWER
-    tower.draw(screen)
+    renderer.draw_background(map_surface, map_rect)
+    renderer.draw_tower(TOWER.image, TOWER.rect)
 
-    # DRAW ENEMIES
     for enemy in enemies:
-        enemy.draw(screen)
+        renderer.draw_enemy(enemy.image, enemy.rect)
+        renderer.draw_enemy_health_bar(enemy.health, enemy.rect[0], enemy.rect[1])
 
-    for bullet in bullets:
-        bullet.draw(screen)
+    renderer.spawn_enemy_button()
+    renderer.draw_tower_health_bar(TOWER.health, TOWER.rect[0], TOWER.rect[1])
 
-    pg.display.flip()
+    pygame.display.flip()
