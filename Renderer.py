@@ -25,3 +25,6 @@ class Renderer:
 
     def spawn_enemy_button(self):
         pygame.draw.rect(self.screen, Renderer.DARK_BROWN, pygame.Rect(50, 50, 100, 50))
+
+    def draw_bullet(self, bullet_surface : pygame.Surface, bullet_rect : pygame.Rect) -> None:
+        self.screen.blit(bullet_surface, bullet_rect)

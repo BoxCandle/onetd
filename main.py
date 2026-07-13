@@ -2,6 +2,7 @@ import pygame
 from Renderer import Renderer
 from Tower import Tower
 from Enemy import Enemy
+from Bullet import Bullet
 pygame.init()
 
 WIDTH = 600
@@ -18,7 +19,8 @@ clock = pygame.time.Clock()
 SPAWN_POINT = 550, HEIGHT // 2 - 50
 
 enemies = []
-
+bullets = []
+towers = [TOWER]
 renderer = Renderer(window)
 
 while True:
@@ -31,9 +33,25 @@ while True:
             if 50 <= mouse_pos[0] <= 150:
                 enemies.append(Enemy(SPAWN_POINT))
                 print("enemy count", len(enemies))
+                print("bullet count", len(bullets))
 
     for enemy in enemies:
         enemy.move(dt)
+        if enemy.health <= 0:
+            enemies.remove(enemy)
+
+    for tower in towers:
+        for enemy in enemies:
+            if tower.shoot(enemy):
+                bullets.append(Bullet(tower.rect.center, enemy, speed = 200, damage = 5))
+                break
+
+    now = pygame.time.get_ticks()
+
+    for bullet in bullets[:]:
+        if bullet.update(dt):  # returns True when bullet hits
+            bullet.target.health -= bullet.damage
+            bullets.remove(bullet)
 
     renderer.draw_background(map_surface, map_rect)
     renderer.draw_tower(TOWER.image, TOWER.rect)
@@ -41,6 +59,9 @@ while True:
     for enemy in enemies:
         renderer.draw_enemy(enemy.image, enemy.rect)
         renderer.draw_enemy_health_bar(enemy.health, enemy.rect[0], enemy.rect[1])
+
+    for bullet in bullets:
+        renderer.draw_bullet(bullet.image, bullet.rect)
 
     renderer.spawn_enemy_button()
     renderer.draw_tower_health_bar(TOWER.health, TOWER.rect[0], TOWER.rect[1])

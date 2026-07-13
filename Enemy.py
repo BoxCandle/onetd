@@ -7,14 +7,14 @@ class Enemy:
         self.image = Enemy.IMAGE
         self.rect = self.image.get_rect(center=pos)
         self.health = 10
-        self.speed = 300
+        self.speed = 100
+        self.goLeft = True
 
     def move(self, dt):
-        goLeft = True
-        self.rect[0] -= 1 * self.speed * dt
-        if goLeft and 100 < self.rect[0] <= 600:
-            self.speed = self.speed
-        else:
-            self.image = pygame.transform.flip(self.image, True, False)
+        self.rect.x += -self.speed * dt
+        if self.rect.x <= 100 or self.rect.x >= 600:
             self.speed = -self.speed
+            self.image = pygame.transform.flip(self.image, 1, 0)
 
+    def take_damage(self, damage):
+        self.health -= damage

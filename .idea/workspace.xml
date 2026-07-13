@@ -1,67 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a24dff51-a497-4ca5-aed2-d6c59b7b9c6b" name="Changes" comment="added sloppy xp bar for tower">
-      <change afterPath="$PROJECT_DIR$/Enemy.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Renderer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tower.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Python Games.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Protect the Tower.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="a24dff51-a497-4ca5-aed2-d6c59b7b9c6b" name="Changes" comment="Restarted the game. Added enemy, tower, map. Created Renderer, Tower, Enemy classes. Changed enemy system and added spawner for them. Also added healthbar to enemies and tower">
+      <change afterPath="$PROJECT_DIR$/Bullet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bullet.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shootsound.wav" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Tower/Shootsound.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tower.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Tower/Tower.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Blood/Blood_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Blood/Blood_1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Blood/Blood_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Blood/Blood_2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Blood/Blood_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Blood/Blood_3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_Parts/Parts/Body.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_Parts/Parts/Body.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_Parts/Parts/Hand_L.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_Parts/Parts/Hand_L.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_Parts/Parts/Hand_R.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_Parts/Parts/Hand_R.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_Parts/Parts/Head.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_Parts/Parts/Head.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_Parts/Parts/Leg_L.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_Parts/Parts/Leg_L.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_Parts/Parts/Leg_R.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_Parts/Parts/Leg_R.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_Parts/Parts_Damaged/Body_Damaged.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_Parts/Parts_Damaged/Body_Damaged.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_Parts/Parts_Damaged/Hand_L_Damaged.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_Parts/Parts_Damaged/Hand_L_Damaged.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_Parts/Parts_Damaged/Hand_R_Damaged.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_Parts/Parts_Damaged/Hand_R_Damaged.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_Parts/Parts_Damaged/Head_Damaged.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_Parts/Parts_Damaged/Head_Damaged.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_Parts/Parts_Damaged/Leg_L_Damaged.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_Parts/Parts_Damaged/Leg_L_Damaged.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_Parts/Parts_Damaged/Leg_R_Damaged.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_Parts/Parts_Damaged/Leg_R_Damaged.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_hurt/Zombie_Hurt.gif" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_hurt/Zombie_Hurt.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_hurt/Zombie_Hurt1.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_hurt/Zombie_Hurt1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_hurt/Zombie_Hurt2.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_hurt/Zombie_Hurt2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_hurt/Zombie_Hurt3.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_hurt/Zombie_Hurt3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_hurt/Zombie_Hurt4.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_hurt/Zombie_Hurt4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_idle/Zombie_idle.gif" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_idle/Zombie_idle.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_idle/Zombie_idle1.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_idle/Zombie_idle1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_idle/Zombie_idle10.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_idle/Zombie_idle10.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_idle/Zombie_idle2.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_idle/Zombie_idle2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_idle/Zombie_idle3.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_idle/Zombie_idle3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_idle/Zombie_idle4.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_idle/Zombie_idle4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_idle/Zombie_idle5.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_idle/Zombie_idle5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_idle/Zombie_idle6.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_idle/Zombie_idle6.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_idle/Zombie_idle7.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_idle/Zombie_idle7.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_idle/Zombie_idle8.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_idle/Zombie_idle8.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_idle/Zombie_idle9.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_idle/Zombie_idle9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_walk/Zombie_Walk.gif" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_walk/Zombie_Walk.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_walk/Zombie_Walk1.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_walk/Zombie_Walk1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_walk/Zombie_Walk10.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_walk/Zombie_Walk10.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_walk/Zombie_Walk2.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_walk/Zombie_Walk2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_walk/Zombie_Walk3.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_walk/Zombie_Walk3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_walk/Zombie_Walk4.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_walk/Zombie_Walk4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_walk/Zombie_Walk5.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_walk/Zombie_Walk5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_walk/Zombie_Walk6.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_walk/Zombie_Walk6.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_walk/Zombie_Walk7.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_walk/Zombie_Walk7.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_walk/Zombie_Walk8.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_walk/Zombie_Walk8.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zombie/Zombie_walk/Zombie_Walk9.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Zombie/Zombie_walk/Zombie_Walk9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bullet.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Tower/bullet.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/collision_system.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/enemy.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_system.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/Enemy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Renderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Renderer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tower.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tower.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scarecrow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tower_system.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,28 +45,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.Bullet.executor": "Run",
-    "Python.Enemy.executor": "Run",
-    "Python.Renderer.executor": "Run",
-    "Python.enemy.executor": "Run",
-    "Python.level_system.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.tower_system.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Python Games",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.Bullet.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Enemy.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Renderer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.enemy.executor&quot;: &quot;Run&quot;,
+    &quot;Python.level_system.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.tower_system.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Python Games&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Python Games" />
@@ -168,7 +114,8 @@
       <workItem from="1783382114121" duration="1347000" />
       <workItem from="1783727539125" duration="3316000" />
       <workItem from="1783798486142" duration="1474000" />
-      <workItem from="1783814144170" duration="10175000" />
+      <workItem from="1783814144170" duration="10272000" />
+      <workItem from="1783896390653" duration="4410000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed XP system. Now it stores and levels up">
       <option name="closed" value="true" />
@@ -226,7 +173,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783799933109</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Restarted the game. Added enemy, tower, map. Created Renderer, Tower, Enemy classes. Changed enemy system and added spawner for them. Also added healthbar to enemies and tower">
+      <option name="closed" value="true" />
+      <created>1783881654275</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1783881654275</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -249,11 +204,12 @@
     <MESSAGE value="Finally was able to make several bullets appear on the screen, but now they turned into a lazer. Will need to use time ticks to make fix it." />
     <MESSAGE value="Made tower shoot in burst of 3 bullets. But after all 3 hit the enemy, none spawn. Will need to add reloading." />
     <MESSAGE value="added sloppy xp bar for tower" />
-    <option name="LAST_COMMIT_MESSAGE" value="added sloppy xp bar for tower" />
+    <MESSAGE value="Restarted the game. Added enemy, tower, map. Created Renderer, Tower, Enemy classes. Changed enemy system and added spawner for them. Also added healthbar to enemies and tower" />
+    <option name="LAST_COMMIT_MESSAGE" value="Restarted the game. Added enemy, tower, map. Created Renderer, Tower, Enemy classes. Changed enemy system and added spawner for them. Also added healthbar to enemies and tower" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Python_Games$main.coverage" NAME="main Coverage Results" MODIFIED="1783799742030" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Protect_the_Tower$main.coverage" NAME="main Coverage Results" MODIFIED="1783881509013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Protect_the_Tower$main.coverage" NAME="main Coverage Results" MODIFIED="1783900803741" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Python_Games$enemy.coverage" NAME="enemy Coverage Results" MODIFIED="1783201390975" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Python_Games$tower_system.coverage" NAME="tower_system Coverage Results" MODIFIED="1783798641277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Python_Games$level_system.coverage" NAME="level_system Coverage Results" MODIFIED="1783128093533" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
