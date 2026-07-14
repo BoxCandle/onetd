@@ -9,6 +9,8 @@ class Enemy:
         self.health = 10
         self.speed = 100
         self.goLeft = True
+        self.gold_reward = 5
+        self.isDead = True
 
     def move(self, dt):
         self.rect.x += -self.speed * dt
@@ -16,5 +18,7 @@ class Enemy:
             self.speed = -self.speed
             self.image = pygame.transform.flip(self.image, 1, 0)
 
-    def take_damage(self, damage):
-        self.health -= damage
+    def kill(self):
+        if self.health <= 0:
+            return self.isDead
+        return False

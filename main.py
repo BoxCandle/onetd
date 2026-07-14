@@ -3,6 +3,7 @@ from Renderer import Renderer
 from Tower import Tower
 from Enemy import Enemy
 from Bullet import Bullet
+from gold_system import GoldSystem
 pygame.init()
 
 WIDTH = 600
@@ -18,10 +19,13 @@ TOWER = Tower((50, HEIGHT // 2 - 50))
 clock = pygame.time.Clock()
 SPAWN_POINT = 550, HEIGHT // 2 - 50
 
+user_gold = 0
 enemies = []
 bullets = []
 towers = [TOWER]
 renderer = Renderer(window)
+gold_system = GoldSystem(user_gold)
+
 
 while True:
     dt = clock.tick(60) / 1000
@@ -30,19 +34,20 @@ while True:
             pygame.quit()
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouse_pos = pygame.mouse.get_pos()
-            if 50 <= mouse_pos[0] <= 150:
+            if 50 <= mouse_pos[0] <= 200 and 50 <= mouse_pos[1] <= 100:
                 enemies.append(Enemy(SPAWN_POINT))
                 print("enemy count", len(enemies))
                 print("bullet count", len(bullets))
 
     for enemy in enemies:
         enemy.move(dt)
-        if enemy.health <= 0:
+        if enemy.kill():
+            user_gold = gold_system.add_gold(enemy.gold_reward)
             enemies.remove(enemy)
 
     for tower in towers:
         for enemy in enemies:
-            if tower.shoot(enemy):
+            if tower.enemy_in_range(enemy):
                 bullets.append(Bullet(tower.rect.center, enemy, speed = 200, damage = 5))
                 break
 
@@ -63,7 +68,7 @@ while True:
     for bullet in bullets:
         renderer.draw_bullet(bullet.image, bullet.rect)
 
-    renderer.spawn_enemy_button()
+    renderer.draw_spawn_enemy_button()
     renderer.draw_tower_health_bar(TOWER.health, TOWER.rect[0], TOWER.rect[1])
-
+    renderer.draw_user_gold(user_gold)
     pygame.display.flip()

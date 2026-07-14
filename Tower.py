@@ -11,8 +11,9 @@ class Tower:
         self.rect = self.image.get_rect(center=pos)
         self.reload = 500
         self.last_shot = 0
+        self.level = 1
 
-    def shoot(self, enemy):
+    def enemy_in_range(self, enemy):
         now = pygame.time.get_ticks()
 
         dx = self.rect.centerx - enemy.rect.centerx
