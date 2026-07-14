@@ -14,30 +14,42 @@ window = pygame.display.set_mode((WIDTH, HEIGHT))
 map_surface = pygame.image.load("assets/Maps/Map.jpg")
 map_rect = map_surface.get_rect(center=(WIDTH // 2,HEIGHT // 2))
 
-TOWER = Tower((50, HEIGHT // 2 - 50))
-
 clock = pygame.time.Clock()
 SPAWN_POINT = 550, HEIGHT // 2 - 50
 
 user_gold = 0
 enemies = []
 bullets = []
-towers = [TOWER]
+towers = []
 renderer = Renderer(window)
 gold_system = GoldSystem(user_gold)
-
+holding = False
 
 while True:
+
+    if not towers:
+        towers.append(Tower((200, 500)))
+
+    mouse_pos = pygame.mouse.get_pos()
     dt = clock.tick(60) / 1000
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            mouse_pos = pygame.mouse.get_pos()
-            if 50 <= mouse_pos[0] <= 200 and 50 <= mouse_pos[1] <= 100:
-                enemies.append(Enemy(SPAWN_POINT))
-                print("enemy count", len(enemies))
-                print("bullet count", len(bullets))
+        if event.type == pygame.MOUSEBUTTONDOWN and 50 <= mouse_pos[0] <= 200 and 50 <= mouse_pos[1] <= 100:
+            enemies.append(Enemy(SPAWN_POINT))
+            print("enemy count", len(enemies))
+            print("bullet count", len(bullets))
+
+        if event.type == pygame.MOUSEBUTTONDOWN and (towers[-1].rect.centerx - 50 <= mouse_pos[0] <= towers[-1].rect.centerx + 50 and
+                    towers[-1].rect.centery - 50 <= mouse_pos[1] <= towers[-1].rect.centery + 50):
+            towers[-1].rect.center = mouse_pos
+            holding = True
+
+        if event.type == pygame.MOUSEBUTTONUP:
+            holding = False
+
+    if holding:
+        towers[-1].rect.center = mouse_pos
 
     for enemy in enemies:
         enemy.move(dt)
@@ -46,10 +58,11 @@ while True:
             enemies.remove(enemy)
 
     for tower in towers:
-        for enemy in enemies:
-            if tower.enemy_in_range(enemy):
-                bullets.append(Bullet(tower.rect.center, enemy, speed = 200, damage = 5))
-                break
+        if tower.rect[1] <= 200 and not holding:
+            for enemy in enemies:
+                if tower.enemy_in_range(enemy):
+                    bullets.append(Bullet(tower.rect.center, enemy, speed = 200, damage = 5))
+                    break
 
     now = pygame.time.get_ticks()
 
@@ -59,7 +72,13 @@ while True:
             bullets.remove(bullet)
 
     renderer.draw_background(map_surface, map_rect)
-    renderer.draw_tower(TOWER.image, TOWER.rect)
+    renderer.draw_tower_inventory()
+
+    for tower in towers:
+        renderer.draw_tower(tower.image, tower.rect)
+        if tower.rect[1] <= 200:
+            renderer.draw_tower_health_bar(tower.health, tower.rect[0], tower.rect[1])
+            renderer.draw_tower_range(tower.rect.center, tower.range)
 
     for enemy in enemies:
         renderer.draw_enemy(enemy.image, enemy.rect)
@@ -69,6 +88,8 @@ while True:
         renderer.draw_bullet(bullet.image, bullet.rect)
 
     renderer.draw_spawn_enemy_button()
-    renderer.draw_tower_health_bar(TOWER.health, TOWER.rect[0], TOWER.rect[1])
     renderer.draw_user_gold(user_gold)
+
+
+
     pygame.display.flip()

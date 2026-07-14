@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a24dff51-a497-4ca5-aed2-d6c59b7b9c6b" name="Changes" comment="Added bullets list and made tower shoot enemies in range. Made enemies dissapear on death">
-      <change afterPath="$PROJECT_DIR$/gold_system.py" afterDir="false" />
+    <list default="true" id="a24dff51-a497-4ca5-aed2-d6c59b7b9c6b" name="Changes" comment="Added gold system">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/Enemy.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Renderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Renderer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tower.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tower.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -116,7 +113,8 @@
       <workItem from="1783798486142" duration="1474000" />
       <workItem from="1783814144170" duration="10272000" />
       <workItem from="1783896390653" duration="5055000" />
-      <workItem from="1783983098594" duration="6826000" />
+      <workItem from="1783983098594" duration="7044000" />
+      <workItem from="1784007791894" duration="4021000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed XP system. Now it stores and levels up">
       <option name="closed" value="true" />
@@ -190,7 +188,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783901125287</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added gold system">
+      <option name="closed" value="true" />
+      <created>1783995035993</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1783995035993</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -215,11 +221,12 @@
     <MESSAGE value="added sloppy xp bar for tower" />
     <MESSAGE value="Restarted the game. Added enemy, tower, map. Created Renderer, Tower, Enemy classes. Changed enemy system and added spawner for them. Also added healthbar to enemies and tower" />
     <MESSAGE value="Added bullets list and made tower shoot enemies in range. Made enemies dissapear on death" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added bullets list and made tower shoot enemies in range. Made enemies dissapear on death" />
+    <MESSAGE value="Added gold system" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added gold system" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Python_Games$main.coverage" NAME="main Coverage Results" MODIFIED="1783799742030" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Protect_the_Tower$main.coverage" NAME="main Coverage Results" MODIFIED="1783994570023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Protect_the_Tower$main.coverage" NAME="main Coverage Results" MODIFIED="1784012965978" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Python_Games$enemy.coverage" NAME="enemy Coverage Results" MODIFIED="1783201390975" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Python_Games$tower_system.coverage" NAME="tower_system Coverage Results" MODIFIED="1783798641277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Python_Games$level_system.coverage" NAME="level_system Coverage Results" MODIFIED="1783128093533" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

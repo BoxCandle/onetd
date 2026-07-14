@@ -2,6 +2,8 @@ import pygame
 
 class Renderer:
     DARK_BROWN = (91, 49, 21)
+    DARK_BROWN_2 = (64, 36, 11)
+    BROWN = (138, 91, 65)
 
     def __init__(self, screen):
         self.screen = screen
@@ -34,3 +36,10 @@ class Renderer:
     def draw_user_gold(self, user_gold):
         gold_count = pygame.font.Font.render(pygame.font.SysFont(pygame.font.get_fonts()[0], 25), f'User gold:{str(user_gold)}', 1, (255, 255, 255))
         self.screen.blit(gold_count, (450, 10))
+
+    def draw_tower_inventory(self):
+        pygame.draw.rect(self.screen, Renderer.DARK_BROWN_2, pygame.Rect(0, 400, 600, 200))
+        pygame.draw.rect(self.screen, Renderer.BROWN, pygame.Rect(5, 405, 590, 190))
+
+    def draw_tower_range(self, tower_pos, range):
+        pygame.draw.circle(self.screen, "Red", tower_pos, range, 3)

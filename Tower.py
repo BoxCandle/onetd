@@ -9,7 +9,7 @@ class Tower:
         self.health = 100
         self.range = 200
         self.rect = self.image.get_rect(center=pos)
-        self.reload = 500
+        self.reload = 200
         self.last_shot = 0
         self.level = 1
 
