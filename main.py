@@ -17,13 +17,19 @@ map_rect = map_surface.get_rect(center=(WIDTH // 2,HEIGHT // 2))
 clock = pygame.time.Clock()
 SPAWN_POINT = 550, HEIGHT // 2 - 50
 
-user_gold = 0
+
 enemies = []
 bullets = []
 towers = []
 renderer = Renderer(window)
 gold_system = GoldSystem(user_gold)
 holding = False
+
+effects = {
+    "poison" : {"dps" : 1, "duration" : 5},
+    "burn" : {"dps" : 2, "duration" : 3}
+}
+user_gold = 0
 
 while True:
 
