@@ -4,11 +4,12 @@ import math
 class Bullet:
     IMAGE = pygame.transform.scale(pygame.image.load("assets/Tower/bullet.png"), (20,20))
 
-    def __init__(self, pos, target, speed = 200, damage = 10):
+    def __init__(self, pos, target, speed = 200, damage = 10, effect = None):
         self.x, self.y = pos
         self.target = target
         self.speed = speed
         self.damage = damage
+        self.effect = effect
         self.image = self.IMAGE
         self.rect = self.image.get_rect(center=pos)
 
