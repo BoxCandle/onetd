@@ -11,6 +11,7 @@ class Enemy:
         self.goLeft = True
         self.gold_reward = 5
         self.isDead = True
+        self.effects = []
 
     def move(self, dt):
         self.rect.x += -self.speed * dt
