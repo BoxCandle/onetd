@@ -1,9 +1,11 @@
 class Effect:
   def __init__(self, effect_type, duration, dps):
-    self.effect_type
-    self.duration = duration
+    data = EFFECTS[effect_type]
+    
+    self.type = effect_type
+    self.duration = data["duration"]
+    self.dps = data["dps"]
     self.timer = 0
-    self.dps = dps
 
   def expired(self):
     return self.timer >= self.duration
