@@ -9,15 +9,12 @@ class Renderer:
     def __init__(self, screen):
         self.screen = screen
 
-    def draw_background(self, map_surface : pygame.Surface, map_rect : pygame.Rect) -> None:
-        self.screen.blit(map_surface, map_rect)
+    def draw_background(self, map_surface : pygame.Surface) -> None:
+        self.screen.blit(map_surface, (0,0))
 
     def draw_tower(self, tower_surface : pygame.Surface, tower_rect : pygame.Rect) -> None:
         self.screen.blit(tower_surface, tower_rect)
-
-    def draw_tower_health_bar(self, health : int, tower_x, tower_y) -> None:
-        pygame.draw.rect(self.screen, Renderer.DARK_BROWN, pygame.Rect(tower_x + 27, tower_y - 25, 105, 15))
-        pygame.draw.rect(self.screen, "Green", pygame.Rect(tower_x + 30, tower_y - 20, health, 5))
+        if pygame.event == pygame.MOUSEBUTTONDOWN: self.draw_tower_range(tower_rect, range)
 
     def draw_enemy(self, enemy_surface : pygame.Surface, enemy_rect : pygame.Rect) -> None:
         self.screen.blit(enemy_surface, enemy_rect)
@@ -35,15 +32,15 @@ class Renderer:
         self.screen.blit(bullet_surface, bullet_rect)
 
     def draw_user_gold(self, user_gold):
-        gold_count = pygame.font.Font.render(pygame.font.SysFont(pygame.font.get_fonts()[0], 25), f'User gold:{str(user_gold)}', 1, (255, 255, 255))
-        self.screen.blit(gold_count, (450, 10))
+        gold_count = pygame.font.Font.render(pygame.font.SysFont(pygame.font.get_fonts()[0], 25), f'Gold:{str(user_gold)}', 1, (245, 197, 39))
+        self.screen.blit(gold_count, (100, 580))
 
     def draw_tower_inventory(self):
         pygame.draw.rect(self.screen, Renderer.DARK_BROWN_2, pygame.Rect(0, 520, 1280, 200))
         pygame.draw.rect(self.screen, Renderer.BROWN, pygame.Rect(5, 525, 1270, 190))
 
-    def draw_tower_range(self, tower_pos, range):
-        pygame.draw.circle(self.screen, "Red", tower_pos, range, 3)
+    def draw_tower_range(self, tower_pos, tower_range):
+        pygame.draw.circle(self.screen, "Red", tower_pos, tower_range, 3)
 
-    def draw_path_point(self, path_cord):
-        pygame.draw.circle(self.screen, "Cyan", path_cord, 30)
+    def draw_path_point(self, cords):
+        pygame.draw.circle(self.screen, "Cyan", cords, 30)
