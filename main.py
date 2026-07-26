@@ -1,101 +1,123 @@
-import pygame
+import pygame, copy
 from Renderer import Renderer
 from Tower import Tower
 from Enemy import Enemy
 from Bullet import Bullet
 from gold_system import GoldSystem
+from Player import Player
+from Cannons import cannons
+
+particle_group = pygame.sprite.Group()
+
 pygame.init()
 
-WIDTH = 600
-HEIGHT = 600
+WIDTH = 1280
+HEIGHT = 720
+PATH_POINT = 950, 305
+
 
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 
-map_surface = pygame.image.load("assets/Maps/Map.jpg")
-map_rect = map_surface.get_rect(center=(WIDTH // 2,HEIGHT // 2))
+
+map_surface = pygame.transform.scale(pygame.image.load("assets/Maps/Map.png").convert(), (1280, 720))
 
 clock = pygame.time.Clock()
-SPAWN_POINT = 550, HEIGHT // 2 - 50
-
-
+SPAWN_POINT = 0 + 400, HEIGHT // 2 - 50
+PLAYER = Player()
 enemies = []
 bullets = []
 towers = []
+shop = [Tower(cannons["Cannon"], (WIDTH // 2, 620)), Tower(cannons["SniperCannon"], (WIDTH // 2 + 100, 620))]
+queue = []
 renderer = Renderer(window)
-gold_system = GoldSystem(user_gold)
+gold_system = GoldSystem(PLAYER.gold)
 holding = False
-
-effects = {
-    "poison" : {"dps" : 1, "duration" : 5},
-    "burn" : {"dps" : 2, "duration" : 3}
-}
-user_gold = 0
+show_details = False
+tools = False
 
 while True:
-
-    if not towers:
-        towers.append(Tower((200, 500)))
-
     mouse_pos = pygame.mouse.get_pos()
     dt = clock.tick(60) / 1000
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
-        if event.type == pygame.MOUSEBUTTONDOWN and 50 <= mouse_pos[0] <= 200 and 50 <= mouse_pos[1] <= 100:
-            enemies.append(Enemy(SPAWN_POINT))
-            print("enemy count", len(enemies))
-            print("bullet count", len(bullets))
-
-        if event.type == pygame.MOUSEBUTTONDOWN and (towers[-1].rect.centerx - 50 <= mouse_pos[0] <= towers[-1].rect.centerx + 50 and
-                    towers[-1].rect.centery - 50 <= mouse_pos[1] <= towers[-1].rect.centery + 50):
-            towers[-1].rect.center = mouse_pos
-            holding = True
-
         if event.type == pygame.MOUSEBUTTONUP:
-            holding = False
+            if 50 <= mouse_pos[0] <= 200 and 50 <= mouse_pos[1] <= 100:
+                enemies.append(Enemy(SPAWN_POINT))
 
-    if holding:
-        towers[-1].rect.center = mouse_pos
+            for tower in shop:
+                if tower.rect.collidepoint(mouse_pos) and tower.cost <= PLAYER.gold:
+                    new_tower = tower.copy()
+                    new_tower.rect.center = mouse_pos
+                    queue.append(new_tower)
+                    holding = True
+                    PLAYER.gold -= 5
+
+        if event.type == pygame.MOUSEBUTTONDOWN and holding:
+            holding = False
+            queue[0].rect.center = mouse_pos
+            tower = queue.pop(0)
+            towers.append(tower)
+
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+            if tools:
+                tools = False
+            else:
+                tools = True
+
+    if holding and queue:
+        queue[0].rect.center = mouse_pos
 
     for enemy in enemies:
-        enemy.move(dt)
+        enemy.follow_path(PATH_POINT,dt)
+
         if enemy.kill():
-            user_gold = gold_system.add_gold(enemy.gold_reward)
+            PLAYER.gold = gold_system.add_gold(enemy.gold_reward)
             enemies.remove(enemy)
 
     for tower in towers:
-        if tower.rect[1] <= 200 and not holding:
+        tower.isActive = True
+        if tower.isActive:
             for enemy in enemies:
                 if tower.enemy_in_range(enemy):
-                    bullets.append(Bullet(tower.rect.center, enemy, speed = 200, damage = 5))
-                    break
+                    bullets.append(Bullet((tower.rect.centerx, tower.rect.centery - 20), enemy, speed = 200, damage = tower.damage)) ; break
 
     now = pygame.time.get_ticks()
 
     for bullet in bullets[:]:
-        if bullet.update(dt):  # returns True when bullet hits
+        if bullet.update(dt):
             bullet.target.health -= bullet.damage
             bullets.remove(bullet)
 
-    renderer.draw_background(map_surface, map_rect)
+    renderer.draw_background(map_surface)
     renderer.draw_tower_inventory()
 
-    for tower in towers:
-        renderer.draw_tower(tower.image, tower.rect)
-        if tower.rect[1] <= 200:
-            renderer.draw_tower_health_bar(tower.health, tower.rect[0], tower.rect[1])
-            renderer.draw_tower_range(tower.rect.center, tower.range)
-
     for enemy in enemies:
+        if enemy.isAttacking: enemy.animate_zombie_attack()
+        enemy.animate_zombie_walk()
         renderer.draw_enemy(enemy.image, enemy.rect)
         renderer.draw_enemy_health_bar(enemy.health, enemy.rect[0], enemy.rect[1])
 
-    for bullet in bullets:
-        renderer.draw_bullet(bullet.image, bullet.rect)
+    for tower in towers:
+        for enemy in enemies:
+            tower.turn_cannon(enemy.rect.center)
+        renderer.draw_tower(tower.image, tower.rect)
 
+    for tower in shop:
+        renderer.draw_tower(tower.image, tower.rect)
+
+    for tower in queue:
+        renderer.draw_tower(tower.image, tower.rect)
+
+    for bullet in bullets: renderer.draw_bullet(bullet.image, bullet.rect)
+
+    if tools:
+        renderer.draw_path_point(PATH_POINT)
+        for tower in towers:
+            renderer.draw_tower_range(tower.rect.center, tower.show_range())
     renderer.draw_spawn_enemy_button()
-    renderer.draw_user_gold(user_gold)
+    renderer.draw_user_gold(PLAYER.gold)
 
-
+    particle_group.draw(window)
 
     pygame.display.flip()
