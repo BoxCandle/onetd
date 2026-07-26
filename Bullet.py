@@ -2,7 +2,7 @@ import pygame
 import math
 
 class Bullet:
-    IMAGE = pygame.transform.scale(pygame.image.load("assets/Tower/bullet.png"), (20,20))
+    IMAGE = pygame.transform.scale(pygame.image.load("assets/Tower/bullet.png"), (40,40))
 
     def __init__(self, pos, target, speed = 200, damage = 10, effect = None):
         self.x, self.y = pos
@@ -18,8 +18,7 @@ class Bullet:
         dy = self.target.rect.centery - self.y
         distance = math.hypot(dx, dy)
 
-        if distance < 5:
-            return self.deal_damage()
+        if distance < 5: return self.deal_damage()
 
         if distance != 0:
             self.x += (dx / distance) * self.speed * dt
