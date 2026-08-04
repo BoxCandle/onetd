@@ -1,23 +1,31 @@
+import pygame
+
 class Effect:
-  def __init__(self, effect_type, duration, dps):
-    data = EFFECTS[effect_type]
-    
-    self.type = effect_type
-    self.duration = data["duration"]
-    self.dps = data["dps"]
-    self.timer = 0
+    def __init__(self, duration):
+      self.duration = duration
 
-  def expired(self):
-    return self.timer >= self.duration
+    def apply(self, enemy):
+      pass
 
-  def get_damage(self, target, dt):
-    if self.effect_type = "poison":
-      return self.dps
-      
-    if self.effect_type = "burn":
-      return self.dps
-    
-    return 0
-  
-  
-  
+    def update(self, dt, enemy):
+      pass
+
+    def expired(self):
+      return self.duration <= 0
+
+class FireEffect(Effect):
+  def __init__(self, duration, dps):
+    super().__init__(duration)
+    self.dps = dps
+    self.color_overlay = (255, 80, 0)
+
+  def update(self, dt, enemy):
+    enemy.health -= self.dps * dt
+    self.duration -= dt
+    print(self.duration)
+
+    if self.duration <= 0:
+        enemy.color_overlay = None
+        return True
+
+    return False
