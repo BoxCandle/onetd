@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a24dff51-a497-4ca5-aed2-d6c59b7b9c6b" name="Changes" comment="1. Removed draw tower hp">
+    <list default="true" id="a24dff51-a497-4ca5-aed2-d6c59b7b9c6b" name="Changes" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bullet.py" beforeDir="false" afterPath="$PROJECT_DIR$/Bullet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cannons.py" beforeDir="false" afterPath="$PROJECT_DIR$/Cannons.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Effect.py" beforeDir="false" afterPath="$PROJECT_DIR$/Effect.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/Enemy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Renderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Renderer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tower.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tower.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/Tower/Shootsound.wav" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/Tower/Tower.png" beforeDir="false" />
@@ -48,6 +53,7 @@
   &quot;keyToString&quot;: {
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;Python.Bullet.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Cannons.executor&quot;: &quot;Debug&quot;,
     &quot;Python.Enemy.executor&quot;: &quot;Run&quot;,
     &quot;Python.Renderer.executor&quot;: &quot;Run&quot;,
     &quot;Python.enemy.executor&quot;: &quot;Run&quot;,
@@ -256,7 +262,55 @@
       <option name="project" value="LOCAL" />
       <updated>1785026671963</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="1. Made class more dry to make it apply to every cannon from cannons folder">
+      <option name="closed" value="true" />
+      <created>1785026800916</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1785026800916</updated>
+    </task>
+    <task id="LOCAL-00019" summary="1. Adjusted events and tower placements">
+      <option name="closed" value="true" />
+      <created>1785026895350</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1785026895350</updated>
+    </task>
+    <task id="LOCAL-00020" summary="s">
+      <option name="closed" value="true" />
+      <created>1785026936411</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1785026936411</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Added PNGs for cannons and bullets">
+      <option name="closed" value="true" />
+      <created>1785026975456</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1785026975456</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Added events class to encapsulate">
+      <option name="closed" value="true" />
+      <created>1785027046863</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1785027046863</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Added player class to store gold">
+      <option name="closed" value="true" />
+      <created>1785027057056</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1785027057056</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -289,7 +343,13 @@
     <MESSAGE value="1. Create zombie animation" />
     <MESSAGE value="1. Bullet size adjusted" />
     <MESSAGE value="1. Removed draw tower hp" />
-    <option name="LAST_COMMIT_MESSAGE" value="1. Removed draw tower hp" />
+    <MESSAGE value="1. Made class more dry to make it apply to every cannon from cannons folder" />
+    <MESSAGE value="1. Adjusted events and tower placements" />
+    <MESSAGE value="s" />
+    <MESSAGE value="Added PNGs for cannons and bullets" />
+    <MESSAGE value="Added events class to encapsulate" />
+    <MESSAGE value="Added player class to store gold" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added player class to store gold" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Python_Games$main.coverage" NAME="main Coverage Results" MODIFIED="1783799742030" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
