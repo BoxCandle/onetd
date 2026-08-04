@@ -12,12 +12,16 @@ class Renderer:
     def draw_background(self, map_surface : pygame.Surface) -> None:
         self.screen.blit(map_surface, (0,0))
 
-    def draw_tower(self, tower_surface : pygame.Surface, tower_rect : pygame.Rect) -> None:
+    def draw_cannon(self, tower_surface : pygame.Surface, tower_rect : pygame.Rect) -> None:
         self.screen.blit(tower_surface, tower_rect)
-        if pygame.event == pygame.MOUSEBUTTONDOWN: self.draw_tower_range(tower_rect, range)
+        if pygame.event == pygame.MOUSEBUTTONDOWN:
+            self.draw_cannon_range(tower_rect, range)
 
-    def draw_enemy(self, enemy_surface : pygame.Surface, enemy_rect : pygame.Rect) -> None:
-        self.screen.blit(enemy_surface, enemy_rect)
+    def draw_enemy(self, enemy) -> None:
+        self.screen.blit(enemy.image, enemy.rect)
+
+        if enemy.color_overlay:
+            self.screen.blit(enemy.color_overlay, enemy.rect)
 
     def draw_enemy_health_bar(self, health : int, enemy_x, enemy_y) -> None:
         pygame.draw.rect(self.screen, Renderer.DARK_BROWN, pygame.Rect(enemy_x + 27, enemy_y - 25, 15, 15))
@@ -35,12 +39,18 @@ class Renderer:
         gold_count = pygame.font.Font.render(pygame.font.SysFont(pygame.font.get_fonts()[0], 25), f'Gold:{str(user_gold)}', 1, (245, 197, 39))
         self.screen.blit(gold_count, (100, 580))
 
-    def draw_tower_inventory(self):
+    def draw_cannon_inventory(self):
         pygame.draw.rect(self.screen, Renderer.DARK_BROWN_2, pygame.Rect(0, 520, 1280, 200))
         pygame.draw.rect(self.screen, Renderer.BROWN, pygame.Rect(5, 525, 1270, 190))
 
-    def draw_tower_range(self, tower_pos, tower_range):
-        pygame.draw.circle(self.screen, "Red", tower_pos, tower_range, 3)
+    def draw_cannon_range(self, tower_pos, tower_range):
+        pygame.draw.circle(self.screen, "Red", tower_pos, tower_range, 2)
 
     def draw_path_point(self, cords):
         pygame.draw.circle(self.screen, "Cyan", cords, 30)
+
+    def draw_enemy_hitbox(self, enemy):
+        pygame.draw.rect(self.screen, "Red", enemy.hitbox, 1)
+
+    def draw_bullet_hitbox(self, bullet):
+        pygame.draw.rect(self.screen, "Red", bullet.hitbox, 1)
